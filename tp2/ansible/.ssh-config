@@ -1,5 +1,5 @@
 Host node1.tp2.lab
-  HostName 10.211.55.20
+  HostName 10.211.55.32
   User vagrant
   Port 22
   UserKnownHostsFile /dev/null
@@ -10,7 +10,18 @@ Host node1.tp2.lab
   LogLevel FATAL
 
 Host node2.tp2.lab
-  HostName 10.211.55.19
+  HostName 10.211.55.33
+  User vagrant
+  Port 22
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /Users/thomasdeasington/.vagrant.d/boxes/rocky-linux-ynov/0/parallels/vagrant_private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
+
+Host proxy.tp2.lab
+  HostName 10.211.55.31
   User vagrant
   Port 22
   UserKnownHostsFile /dev/null

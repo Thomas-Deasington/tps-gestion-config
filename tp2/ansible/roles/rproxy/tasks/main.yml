@@ -1,9 +1,8 @@
----
-- name: Install httpd
+- name: Install NGINX
   import_tasks: install.yml
 
-- name: Copy httpd.conf
-  import_tasks: config.yml
+- name: Configure vhost
+  import_tasks: vhost.yml
 
 - name: Configure firewall
   import_tasks: firewall.yml

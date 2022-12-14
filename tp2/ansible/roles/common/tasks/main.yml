@@ -6,3 +6,6 @@
 
 - name: Create users
   import_tasks: users.yml
+
+- name: Add hosts
+  import_tasks: add_hosts.yml

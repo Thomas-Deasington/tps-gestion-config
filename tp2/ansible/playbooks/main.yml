@@ -1,5 +1,16 @@
-- hosts: tp2
+---
+- hosts: all
   become: true
   roles:
     - common
-    - nginx
+
+- hosts: web
+  become: true
+  roles:
+    - apache
+    - webapp
+
+- hosts: proxy
+  become: true
+  roles:
+    - rproxy

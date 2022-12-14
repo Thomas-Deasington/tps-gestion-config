@@ -2,4 +2,4 @@
   ansible.builtin.group:
     name: "{{ item.group }}"
     state: present
-  with_items: "{{ users }}"
+  with_items: "{{ users|default([]) }}"
