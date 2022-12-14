@@ -41,28 +41,6 @@ reboot the machine
 # dans la vm
 cat /var/log/cloud-init-output.log
 
-#cloud-config
-bootcmd:
-  - timedatectl set-timezone Europe/Paris
-  - timedatectl set-ntp true
-packages:
-  - ansible-core
-users:
-  - name: toto
-    gecos: mais woaw
-    primary_group: toto
-    groups: wheel
-    shell: /bin/bash
-    sudo: ALL=(ALL) NOPASSWD:ALL
-    lock_passwd: false
-    passwd: $6$9pf4bcKQJT9pMF9G$S6OPqz4ZRhWjutdqtsbmUdVcLg4fk/CXFspmhlM3RyChFTbI9f2emw4DC/R/gvQKdklL5uTghUP/BwBaws2x0.
-    ssh_authorized_keys:
-      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMO/JQ3AtA3k8iXJWlkdUKSHDh215OKyLR0vauzD7BgA it4@nowhere.it4
-  - name: ansible
-    gecos: ansible
-    primary_group: ansible
-    groups: wheel
-    shell: /bin/bash
-    sudo: ALL=(ALL) NOPASSWD:ALL
-    ssh_authorized_keys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2V2KVdrXOd+4PZWDdCcrPqIyQFlAs+zPcBYG2v6YXHBhnWO7b0sOC9JCUnBxIBKdr5Vlaz+lL/LfPHZoQcVtG9m0ZaYxHuUajFkHcic7JZwXgJXE3HFLwqq6SBqjXOXGjyksSPNNE4gwMaiWnPRu3smHuBW+Z0E8CZ3qd+Hg3DTlxGG7KLmpIxKsQiozS8daQA1VkwhMj+EsWbNjPYoqUnc891aVYPu+wMVgAkGtjdAC2WgZJQZ+KEYRIwp1eiRhO10dz67MHsz4Is2NoLf2mw7GJDUztLClZl87dxXgrOp+zVc9LnXh9palrAKw9JyWSlO/7xaTz056Qv+ixwkOOhXKtYvCAOEvO0zAQAniSCsOnCioo6CD1KAv/bmY8lQ1cMGRKXqoRtoei1f5neTnNWMeU1ps41A/WTXjtRd43UkeE26Loj5GvJJnLS7eN6Uzn1DXGrTIDdcQ4u+B1qGgdtBPm4VfTlsguBPCnF/lqbk5ll+J1AA2LmPEOSQz8wtk= thomasdeasington@MacBook-Pro-de-Thomas.local
+
+# AWX
+COMPOSE_TAG=devel make docker-compose
