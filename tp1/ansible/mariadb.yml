@@ -1,0 +1,34 @@
+---
+- name: Deploy MariaDB
+  hosts: db
+  become: true
+
+  tasks:
+    - name: Install MariaDB
+      dnf:
+        name: mariadb-server
+        state: present
+
+    - name: Install MySQL module
+      package:
+        name: python3-PyMySQL
+        state: present
+
+    - name: Start MariaDB
+      service:
+        name: mariadb
+        state: started
+
+    - name: Create database
+      community.mysql.mysql_db:
+        name: tp1
+        state: present
+        login_unix_socket: /var/lib/mysql/mysql.sock
+
+    - name: Create user
+      community.mysql.mysql_user:
+        name: user-db
+        password: my-password
+        priv: 'tp1.*:ALL'
+        state: present
+        login_unix_socket: /var/lib/mysql/mysql.sock
