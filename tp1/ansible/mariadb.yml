@@ -29,6 +29,12 @@
       community.mysql.mysql_user:
         name: user-db
         password: my-password
+        host: '%'
         priv: 'tp1.*:ALL'
         state: present
         login_unix_socket: /var/lib/mysql/mysql.sock
+
+    - name: Open mysql port
+      firewalld:
+        port: 3306/tcp
+        state: enabled
