@@ -1,0 +1,56 @@
+---
+- name: Deploy NGINX
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Install NGINX
+      dnf:
+        name: nginx
+        state: present
+
+    - name: Create private key (RSA, 4096 bits)
+      community.crypto.openssl_privatekey:
+        path: /etc/pki/tls/private/certificate.key
+
+    - name: Generate a Self Signed OpenSSL certificate
+      community.crypto.x509_certificate:
+        path: /etc/pki/tls/certs/certificate.crt
+        privatekey_path: /etc/pki/tls/private/certificate.key
+        provider: selfsigned
+
+    - name: Create directory
+      file:
+        path: /var/www/tp1_site
+        state: directory
+
+    - name: Create index.html
+      copy:
+        content: >-
+          <html>
+            <head>
+              <title>TP1</title>
+            </head>
+            <body>
+              <h1>Hello world !</h1>
+            </body>
+          </html>
+        dest: /var/www/tp1_site/index.html
+
+    - name: Create nginx config
+      ansible.builtin.copy:
+        src: "./templates/{{ item }}"
+        dest: "/etc/nginx/conf.d/{{ item }}"
+      with_items:
+        - tp1.conf
+        - tp1-tls.conf
+
+    - name: Open port 443
+      firewalld:
+        port: 443/tcp
+        state: enabled
+
+    - name: Start NGINX
+      service:
+        name: nginx
+        state: started
