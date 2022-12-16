@@ -1,0 +1,10 @@
+- name: Delete webroot
+  file:
+    path: "{{ nginx_webroot }}"
+    state: absent
+
+- name: Delete NGINX Virtual Host
+  file:
+    path: /etc/nginx/conf.d/{{ item }}.conf
+    state: absent
+  with_items: "{{ removed_vhosts }}"

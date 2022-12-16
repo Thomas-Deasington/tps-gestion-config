@@ -11,4 +11,5 @@
 - name: NGINX Virtual Host
   template:
     src: vhost.conf.j2
-    dest: /etc/nginx/conf.d/{{ nginx_servername }}.conf
+    dest: /etc/nginx/conf.d/{{ item }}.conf
+  with_items: "{{ vhosts }}"

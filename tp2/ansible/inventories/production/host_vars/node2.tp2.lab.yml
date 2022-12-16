@@ -1,8 +1,3 @@
-common_packages:
-  - vim
-  - git
-  - rsync
-
 vhosts:
   - toto.com
 
