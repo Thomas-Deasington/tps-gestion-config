@@ -1,0 +1,4 @@
+- name: Open port 8080
+  firewalld:
+    port: 8080/tcp
+    state: enabled
