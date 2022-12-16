@@ -1,0 +1,27 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "rocky-linux-ynov"
+
+  config.vm.define "node1.tp2.lab" do |vm1|
+    vm1.vm.hostname = "node1.tp2.lab"
+    vm1.vm.network "private_network", ip: "10.2.1.11"
+  end
+
+  config.vm.define "node2.tp2.lab" do |vm2|
+    vm2.vm.hostname = "node2.tp2.lab"
+    vm2.vm.network "private_network", ip: "10.2.1.12"
+  end
+
+  config.vm.provider "parallels" do |prl|
+    # Customize the amount of memory on the VM:
+    prl.memory = "1024"
+  end
+
+  # Désactive les updates auto qui peuvent ralentir le lancement de la machine
+  config.vm.box_check_update = false
+
+  # La ligne suivante permet de désactiver le montage d'un dossier partagé (ne marche pas tout le temps directement suivant vos OS, versions d'OS, etc.)
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  # Exécution d'un script au démarrage de la VM
+  config.vm.provision "shell", path: "setup.sh"
+end

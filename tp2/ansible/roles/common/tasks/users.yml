@@ -1,0 +1,6 @@
+- name: Create users
+  ansible.builtin.user:
+    name: "{{ item }}"
+    shell: /bin/bash
+    state: present
+  with_items: "{{ users }}"

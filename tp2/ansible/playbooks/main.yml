@@ -1,0 +1,4 @@
+- hosts: tp2
+  become: true
+  roles:
+    - common

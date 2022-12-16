@@ -1,0 +1,22 @@
+Host node1.tp2.lab
+  HostName 10.211.55.14
+  User vagrant
+  Port 22
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /Users/thomasdeasington/.vagrant.d/boxes/rocky-linux-ynov/0/parallels/vagrant_private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
+
+Host node2.tp2.lab
+  HostName 10.211.55.13
+  User vagrant
+  Port 22
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /Users/thomasdeasington/.vagrant.d/boxes/rocky-linux-ynov/0/parallels/vagrant_private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
+
