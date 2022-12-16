@@ -12,3 +12,5 @@
 *.box
 
 .DS_Store
+
+*.key.pub
