@@ -1,4 +1,13 @@
 users:
-  - alice
-  - bob
-  - eve
+  - name: alice
+    password: '$6$KGtP6QYvLY8aaJzr$tGTYlH8s4qKiT9Q3Z3N3gtCmkCQDaO5a0QSVpKEo2.qDrHJcB/XMnp0gisP1oukTbNeFi4swlGJgDc0zBoLRD/'
+    group: admin
+    shell: /bin/bash
+  - name: bob
+    password: '$6$KGtP6QYvLY8aaJzr$tGTYlH8s4qKiT9Q3Z3N3gtCmkCQDaO5a0QSVpKEo2.qDrHJcB/XMnp0gisP1oukTbNeFi4swlGJgDc0zBoLRD/'
+    group: admin
+    shell: /bin/bash
+  - name: eve
+    password: '$6$KGtP6QYvLY8aaJzr$tGTYlH8s4qKiT9Q3Z3N3gtCmkCQDaO5a0QSVpKEo2.qDrHJcB/XMnp0gisP1oukTbNeFi4swlGJgDc0zBoLRD/'
+    group: admin
+    shell: /bin/bash

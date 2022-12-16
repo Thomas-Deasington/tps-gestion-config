@@ -1,5 +1,8 @@
 - name: Install common packages
   import_tasks: packages.yml
 
+- name: Create groups
+  import_tasks: groups.yml
+
 - name: Create users
   import_tasks: users.yml
