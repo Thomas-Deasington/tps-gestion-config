@@ -1,5 +1,15 @@
 vhosts:
-  - toto.com
+  - nginx_servername: site1.tp2.lab
+    nginx_port: 8082
+    nginx_webroot: /var/www/html/test2
+    nginx_index_content: "<h1>teeeeeest 2</h1>"
+
+  - nginx_servername: site2.tp2.lab
+    nginx_port: 8083
+    nginx_webroot: /var/www/html/test3
+    nginx_index_content: "<h1>teeeeeest 3</h1>"
 
 removed_vhosts:
-  - titi.com
+  - nginx_servername: site3.tp2.lab
+    nginx_port: 8084
+    nginx_webroot: /var/www/html/test4

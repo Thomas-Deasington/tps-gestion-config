@@ -1,5 +1,5 @@
 Host node1.tp2.lab
-  HostName 10.211.55.15
+  HostName 10.211.55.20
   User vagrant
   Port 22
   UserKnownHostsFile /dev/null
@@ -10,7 +10,7 @@ Host node1.tp2.lab
   LogLevel FATAL
 
 Host node2.tp2.lab
-  HostName 10.211.55.16
+  HostName 10.211.55.19
   User vagrant
   Port 22
   UserKnownHostsFile /dev/null

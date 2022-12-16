@@ -4,14 +4,17 @@
 - name: Configure NGINX
   import_tasks: config.yml
 
-- name: Remove VirtualHosts
-  import_tasks: remove_vhosts.yml
-
 - name: Deploy VirtualHosts
-  import_tasks: add_vhosts.yml
+  include_tasks: add_vhosts.yml
+  with_items: "{{ vhosts }}"
+  loop_control:
+    loop_var: item
+
+- name: Remove VirtualHosts
+  include_tasks: remove_vhosts.yml
+  with_items: "{{ removed_vhosts }}"
+  loop_control:
+    loop_var: item
 
 - name: Configure firewall
   import_tasks: firewall.yml
-
-- name: Start NGINX
-  import_tasks: start.yml
