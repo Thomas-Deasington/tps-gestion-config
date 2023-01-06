@@ -1,0 +1,11 @@
+#cloud-config
+users:
+  - name: test
+    gecos: deployed by cloud-init
+    primary_group: test
+    groups: wheel
+    shell: /bin/bash
+    lock_passwd: false
+    passwd: $6$XURsDlAF20pG3C3W$8a9/8WMP7yuGGqCujP/WiLSEYjYfObUiuLpYokoISUDO0LqkaNd6bp8tnqow29aNl1oXvgU4CNK.1q76WNfAs/
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMO/JQ3AtA3k8iXJWlkd8zAHDh215OKyLR0vauzD7BgA

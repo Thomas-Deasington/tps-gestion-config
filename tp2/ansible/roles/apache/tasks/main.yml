@@ -1,0 +1,21 @@
+---
+# install httpd
+
+- name: install httpd
+  yum:
+    name: httpd
+    state: present
+
+# copy httpd.conf
+- name: copy httpd.conf
+  copy:
+    src: httpd.conf
+    dest: /etc/httpd/conf/httpd.conf
+
+# configure firewall
+- name: configure firewall
+  firewalld:
+    service: http
+    permanent: yes
+    state: enabled
+  become: yes

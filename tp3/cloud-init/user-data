@@ -1,0 +1,12 @@
+#cloud-config
+users:
+  - name: hello
+    gecos: mais woaw
+    primary_group: hita
+    groups: wheel
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    lock_passwd: false
+    passwd: $6$en2KbAvo1BheEGDb$2U9q.FZZos/8hT7XeqF9EzxXuWDOq2eOu72T8xerjUjqfTlfxBUqlYP2KT13ohZHxiHuJZYOL6TjemHckdauv0
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMO/JQ3AtA3k8iXJWlkdUKSHDh215OKyLR0vauzD7BgA it4@nowhere.it4
