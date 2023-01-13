@@ -7,8 +7,62 @@ qemu-img convert -f qcow2 -O parallels Rocky-9-GenericCloud-Base.latest.aarch64.
 # créer un fichier iso à partir des fichier user-data & meta-data :
 
 ```bash
-mkisofs -output cloud-init.iso -volid cloudinitdata -joliet -rock {user-data,meta-data}
+mkisofs -output cloud-init.iso -volid cidata -joliet -rock {user-data,meta-data}
 ```
 
 https://developer.hashicorp.com/vagrant/docs/cloud-init/usage
 VAGRANT_EXPERIMENTAL="cloud_init,disks"
+
+
+localectl set-keymap fr
+sudo adduser vagrant
+sudo -i
+passwd vagrant
+vagrant
+su - vagrant
+mkdir -p .ssh/authorized_keys
+chmod 0700 .ssh
+chmod 0600 .ssh/authorized_keys
+
+sudo systemctl restart sshd
+
+
+
+cloud-init status
+sudo cloud-init clean
+cloud-init status
+
+# désactiver SELinux
+sudo vi /etc/selinux/config
+SELINUX=disabled
+reboot the machine
+
+
+# dans la vm
+cat /var/log/cloud-init-output.log
+
+#cloud-config
+bootcmd:
+  - timedatectl set-timezone Europe/Paris
+  - timedatectl set-ntp true
+packages:
+  - ansible-core
+users:
+  - name: toto
+    gecos: mais woaw
+    primary_group: toto
+    groups: wheel
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    lock_passwd: false
+    passwd: $6$9pf4bcKQJT9pMF9G$S6OPqz4ZRhWjutdqtsbmUdVcLg4fk/CXFspmhlM3RyChFTbI9f2emw4DC/R/gvQKdklL5uTghUP/BwBaws2x0.
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMO/JQ3AtA3k8iXJWlkdUKSHDh215OKyLR0vauzD7BgA it4@nowhere.it4
+  - name: ansible
+    gecos: ansible
+    primary_group: ansible
+    groups: wheel
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2V2KVdrXOd+4PZWDdCcrPqIyQFlAs+zPcBYG2v6YXHBhnWO7b0sOC9JCUnBxIBKdr5Vlaz+lL/LfPHZoQcVtG9m0ZaYxHuUajFkHcic7JZwXgJXE3HFLwqq6SBqjXOXGjyksSPNNE4gwMaiWnPRu3smHuBW+Z0E8CZ3qd+Hg3DTlxGG7KLmpIxKsQiozS8daQA1VkwhMj+EsWbNjPYoqUnc891aVYPu+wMVgAkGtjdAC2WgZJQZ+KEYRIwp1eiRhO10dz67MHsz4Is2NoLf2mw7GJDUztLClZl87dxXgrOp+zVc9LnXh9palrAKw9JyWSlO/7xaTz056Qv+ixwkOOhXKtYvCAOEvO0zAQAniSCsOnCioo6CD1KAv/bmY8lQ1cMGRKXqoRtoei1f5neTnNWMeU1ps41A/WTXjtRd43UkeE26Loj5GvJJnLS7eN6Uzn1DXGrTIDdcQ4u+B1qGgdtBPm4VfTlsguBPCnF/lqbk5ll+J1AA2LmPEOSQz8wtk= thomasdeasington@MacBook-Pro-de-Thomas.local

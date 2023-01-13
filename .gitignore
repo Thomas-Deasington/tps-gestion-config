@@ -20,3 +20,9 @@
 *.vdi
 
 .rocky9.hdd/
+
+*.iso
+
+*.hdd
+
+*.pvm

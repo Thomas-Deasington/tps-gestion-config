@@ -7,6 +7,6 @@ users:
     shell: /bin/bash
     sudo: ALL=(ALL) NOPASSWD:ALL
     lock_passwd: false
-    passwd: $6$en2KbAvo1BheEGDb$2U9q.FZZos/8hT7XeqF9EzxXuWDOq2eOu72T8xerjUjqfTlfxBUqlYP2KT13ohZHxiHuJZYOL6TjemHckdauv0
+    passwd: $6$9pf4bcKQJT9pMF9G$S6OPqz4ZRhWjutdqtsbmUdVcLg4fk/CXFspmhlM3RyChFTbI9f2emw4DC/R/gvQKdklL5uTghUP/BwBaws2x0.
     ssh_authorized_keys:
       - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMO/JQ3AtA3k8iXJWlkdUKSHDh215OKyLR0vauzD7BgA it4@nowhere.it4

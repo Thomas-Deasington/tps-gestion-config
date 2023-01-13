@@ -3,9 +3,8 @@ Vagrant.configure("2") do |config|
   # On désactive la synchro automatique du dossier courant, pour que ça marche, il faut les Guest Additions
   config.vm.synced_folder '.', '/vagrant', disabled: true
 
-  # Ajout de la conf cloud-init
-  config.vm.cloud_init do |cloud_init|
-    cloud_init.content_type = "text/cloud-config"
-    cloud_init.path = 'user-data'
+  # config.vm.disk :dvd, name: "cidata", file: "./cloud-init.iso"
+  config.vm.provider "parallels" do |prl|
+    prl.customize ["set", :id, "--device-set", "cdrom0", "--image", "./cloud-init.iso", "--connect"]
   end
 end
